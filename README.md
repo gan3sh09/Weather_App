@@ -13,6 +13,11 @@ flutter pub get
 ## Then,
 flutter run
 
+## Used Packaged
+get: ^4.6.6
+dio: ^5.4.3+1
+intl: ^0.19.0
+
 
 
 https://github.com/gan3sh09/Weather_App/assets/98739865/cb38a548-69d5-4721-965c-c6b4bb7ec890
