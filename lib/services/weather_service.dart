@@ -2,6 +2,7 @@
 
 import 'package:weather_app/api/api_repository.dart';
 import 'package:weather_app/model/current_weather_data.dart';
+import 'package:weather_app/model/five_days_data.dart';
 
 class WeatherServices {
   final String city;
@@ -33,29 +34,27 @@ class WeatherServices {
     );
   }
 
-  void getTopFiveCities({
+  /* void getFiveDaysThreeHoursForecastData({
     Function? beforeSend,
-    Function(dynamic currentWeatherData)? onSuccess,
+    Function(List<FiveDayData> fiveDayData)? onSuccess,
     Function(dynamic error)? onError,
   }) {
-    final url = '$baseUrl/top-five-cities'; // Adjust the URL as per your API endpoint
-    ApiRepository(url: url, payload: {}).get(
-      beforeSend: beforeSend,
-      onSuccess: onSuccess,
-      onError: onError,
-    );
-  }
+    final url = '$baseUrl/forecast?q=$city&lang=en&$apiKey';
 
-  void getFiveDaysThreeHoursForecastData({
-    Function? beforeSend,
-    Function(dynamic currentWeatherData)? onSuccess,
-    Function(dynamic error)? onError,
-  }) {
-    final url = '$baseUrl/five-days-forecast'; // Adjust the URL as per your API endpoint
-    ApiRepository(url: url, payload: {}).get(
-      beforeSend: beforeSend,
-      onSuccess: onSuccess,
-      onError: onError,
-    );
-  }
+    print(url);
+    ApiRepository(
+      url: url,
+      payload: {},
+    ).get(
+        beforeSend: beforeSend,
+        onSuccess: (data) => {
+              onSuccess!((data['list'] as List)
+                  .map((t) => FiveDayData.fromJson(t))
+                  .toList())
+            },
+        onError: (error) => {
+              print(error),
+              onError!(error),
+            });
+  } */
 }

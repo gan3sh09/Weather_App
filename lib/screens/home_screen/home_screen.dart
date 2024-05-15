@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:weather_app/constants/colors.dart';
 import 'package:weather_app/constants/image_string.dart';
 import 'package:weather_app/controller/home_controller.dart';
+import 'package:weather_app/model/current_weather_data.dart';
+import 'package:weather_app/screens/home_screen/layout/other_city.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,6 +13,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: whiteColor,
       resizeToAvoidBottomInset: false,
       body: GetBuilder<HomeController>(
         builder: (controller) => Column(
@@ -268,7 +271,55 @@ class HomeScreen extends StatelessWidget {
             ),
             Expanded(
               flex: 2,
-              child: Container(),
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Container(
+                      padding: const EdgeInsets.only(top: 120),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'other city'.toUpperCase(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                    color: Colors.black45,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Roboto',
+                                  ),
+                            ),
+                            SizedBox(
+                              height: 150,
+                              child: ListView.separated(
+                                physics: const BouncingScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  CurrentWeatherData? data;
+                                  (controller.dataList.isNotEmpty)
+                                      ? data = controller.dataList[index]
+                                      : null;
+                                  return OtherCity(data: data);
+                                },
+                                separatorBuilder: (context, index) =>
+                                    const VerticalDivider(
+                                  color: Colors.transparent,
+                                ),
+                                scrollDirection: Axis.horizontal,
+                                itemCount: controller.dataList.length,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
