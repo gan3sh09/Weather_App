@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:weather_app/constants/colors.dart';
 import 'package:weather_app/constants/image_string.dart';
 import 'package:weather_app/model/current_weather_data.dart';
 
@@ -16,6 +18,7 @@ class OtherCity extends StatelessWidget {
       width: 140,
       height: 150,
       child: Card(
+        color: whiteColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
@@ -42,13 +45,11 @@ class OtherCity extends StatelessWidget {
                     fontFamily: 'Roboto',
                   ),
             ),
-            Container(
+            SizedBox(
               width: 50,
               height: 50,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(iconWeather),
-                ),
+              child: LottieBuilder.asset(
+                Images.cloudyAnim,
               ),
             ),
             Text(

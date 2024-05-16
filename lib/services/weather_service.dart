@@ -34,7 +34,7 @@ class WeatherServices {
     );
   }
 
-  /* void getFiveDaysThreeHoursForecastData({
+  void getFiveDaysThreeHoursForecastData({
     Function? beforeSend,
     Function(List<FiveDayData> fiveDayData)? onSuccess,
     Function(dynamic error)? onError,
@@ -46,7 +46,7 @@ class WeatherServices {
       url: url,
       payload: {},
     ).get(
-        beforeSend: beforeSend,
+        beforeSend: () => {},
         onSuccess: (data) => {
               onSuccess!((data['list'] as List)
                   .map((t) => FiveDayData.fromJson(t))
@@ -56,5 +56,5 @@ class WeatherServices {
               print(error),
               onError!(error),
             });
-  } */
+  }
 }

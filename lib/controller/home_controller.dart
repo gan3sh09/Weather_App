@@ -28,6 +28,7 @@ class HomeController extends GetxController {
 
   void initstate() {
     getCurrentWeatherData();
+    getFiveDaysData();
   }
 
   void getCurrentWeatherData() {
@@ -51,7 +52,7 @@ class HomeController extends GetxController {
       'Biratnagar',
       'Dhangadhi'
     ];
-    /* for (var c in cities) {
+    for (var c in cities) {
       WeatherServices(city: c).getCurrentWeatherData(onSuccess: (data) {
         dataList.add(data);
         update();
@@ -59,20 +60,10 @@ class HomeController extends GetxController {
         print(error);
         update();
       });
-    } */
-
-    cities.forEach((c) {
-      WeatherServices(city: '$c').getCurrentWeatherData(onSuccess: (data) {
-        dataList.add(data);
-        update();
-      }, onError: (error) {
-        print(error);
-        update();
-      });
-    });
+    }
   }
 
-  /* void getFiveDaysData() {
+  void getFiveDaysData() {
     WeatherServices(city: city).getFiveDaysThreeHoursForecastData(
         onSuccess: (data) {
       fiveDaysData = data;
@@ -81,5 +72,5 @@ class HomeController extends GetxController {
       print(error);
       update();
     });
-  } */
+  }
 }

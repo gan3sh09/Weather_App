@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
+
 import 'package:weather_app/constants/colors.dart';
 import 'package:weather_app/constants/image_string.dart';
 import 'package:weather_app/controller/home_controller.dart';
 import 'package:weather_app/model/current_weather_data.dart';
 import 'package:weather_app/screens/home_screen/layout/other_city.dart';
+import 'package:weather_app/screens/home_screen/layout/temp_chart.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -222,16 +225,11 @@ class HomeScreen extends StatelessWidget {
                                             ),
                                             child: Column(
                                               children: [
-                                                Container(
+                                                SizedBox(
                                                   width: 120,
                                                   height: 120,
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                    image: DecorationImage(
-                                                      image: AssetImage(
-                                                          iconWeather),
-                                                      fit: BoxFit.cover,
-                                                    ),
+                                                  child: LottieBuilder.asset(
+                                                    Images.cloudyAnim,
                                                   ),
                                                 ),
                                                 Text(
@@ -313,6 +311,32 @@ class HomeScreen extends StatelessWidget {
                                 itemCount: controller.dataList.length,
                               ),
                             ),
+                            Container(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'forcast next 5 days'.toUpperCase(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.copyWith(
+                                          color: Colors.black45,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Roboto',
+                                        ),
+                                  ),
+                                  const Icon(
+                                    Icons.next_plan_outlined,
+                                    color: darkTextColor,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const TempChart()
                           ],
                         ),
                       ),

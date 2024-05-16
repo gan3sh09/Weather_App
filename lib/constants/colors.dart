@@ -13,3 +13,7 @@ const containerColor = Color(0xFFe4e5f1);
 
 // Color for search box
 const searchBoxColor = Color(0xFF979797);
+
+const scafDarkBackground = Color(0xFF121212);
+const containerDark = Color(0xFF282828);
+
