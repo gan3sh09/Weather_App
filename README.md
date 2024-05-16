@@ -17,6 +17,8 @@ flutter run
 get: ^4.6.6
 dio: ^5.4.3+1
 intl: ^0.19.0
+syncfusion_flutter_charts: ^25.2.4
+lottie: ^3.1.1
 
 
 
