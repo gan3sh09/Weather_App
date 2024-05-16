@@ -1,9 +1,4 @@
 # weather_app
-
-A new Flutter project.
-
-## Getting Started
-
 ## Installation
 
 Clone the project
